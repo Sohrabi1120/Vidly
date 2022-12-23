@@ -6,10 +6,10 @@
 
 <h2>Customers</h2>
 
-<ul>
-    @foreach (var customer in Model.Customers)
-    {
-        <a href="http://customer/" target="_blank">@customer.Name</a>
-        <li>@customer.Name</li>
-    }
-</ul>
+@foreach (var customer in Model.Customers)
+{
+    <div>
+        @Html.ActionLink(customer.Name, "Details", "Customers", new { customer.Id }, null )
+    </div>
+}
+

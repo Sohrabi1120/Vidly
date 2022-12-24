@@ -6,10 +6,20 @@
 
 <h2>Customers</h2>
 
-@foreach (var customer in Model.Customers)
+@if (Model.Customers == null)
 {
-    <div>
-        @Html.ActionLink(customer.Name, "Details", "Customers", new { customer.Id }, null )
-    </div>
+    <h3>We dont have any customers.</h3>
 }
+else
+{
+
+    foreach (var customer in Model.Customers)
+    {
+        <div>
+            @Html.ActionLink(customer.Name, "Details", "Customers", new { customer.Id }, null)
+        </div>
+    }
+
+}
+
 

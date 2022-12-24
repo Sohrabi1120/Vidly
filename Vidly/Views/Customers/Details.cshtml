@@ -1,8 +1,8 @@
 ﻿@model Vidly.ViewModels.CustomersViewModel
 @{
-    ViewBag.Title = "CustomerInfo";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Customers.SingleOrDefault().Name</h2>
+<h2>@Model.Customers.FirstOrDefault().Name</h2>
 

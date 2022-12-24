@@ -30,14 +30,10 @@ namespace Vidly.Controllers
         {
             return Content("Id=" + Id);
         }
-        public ActionResult Index(int? pageIndex, string orderBy)
+        public ActionResult Index()
         {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-
-            if (String.IsNullOrWhiteSpace(orderBy))
-                orderBy = "Name";
-            return Content(String.Format("pageIndex={0}&orderBy={1}", pageIndex, orderBy));
+            var movies = new Movie
+            return View();
         }
         [Route("movies/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)

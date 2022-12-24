@@ -26,8 +26,8 @@ namespace Vidly.Controllers
             return View(customers);
         }
 
-        [Route("Customers/Details/{Id}")]
-        public ActionResult CustomerInfo(int Id)
+        [Route("Customers/Details/{Id:int}")]
+        public ActionResult Details(int Id)
         {
             var customers = new CustomersViewModel()
             {
@@ -38,7 +38,11 @@ namespace Vidly.Controllers
                 }
 
             };
-            return View(customers.Customers.Where(c=> c.Id==Id));
+            var result = customers.Customers.Skip(Id - 1).FirstOrDefault();
+            return View(new CustomersViewModel() 
+            {
+                Customers= new List<Customer> { result}
+            });
         }
     }
 }

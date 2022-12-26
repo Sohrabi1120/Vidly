@@ -4,15 +4,16 @@ using System.Linq;
 using System.Web;
 using Vidly.Core;
 using Vidly.Core.Repositories;
+using Vidly.Models;
 using Vidly.Persistence.Repositories;
 
 namespace Vidly.Persistence
 {
     public class UnitOfWork: IUnitOfWork
     {
-        private readonly VidlyContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public UnitOfWork(VidlyContext context)
+        public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
             Movies = new MovieRepository(context);

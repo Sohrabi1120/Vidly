@@ -9,14 +9,14 @@ namespace Vidly.Persistence.Repositories
 {
     public class MovieRepository : Repository<Movie>, IMovieRepository
     {
-        public MovieRepository(VidlyContext context)
+        public MovieRepository(ApplicationDbContext context)
             : base(context)
         {
         }
 
-        public VidlyContext VidlyContext
+        public ApplicationDbContext VidlyContext
         {
-            get { return Context as VidlyContext; }
+            get { return Context as ApplicationDbContext; }
         }
     }
 }

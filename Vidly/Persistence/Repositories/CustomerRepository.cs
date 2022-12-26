@@ -9,14 +9,14 @@ namespace Vidly.Persistence.Repositories
 {
     public class CustomerRepository: Repository<Customer>, ICustomerRepository
     {
-        public CustomerRepository(VidlyContext context)
+        public CustomerRepository(ApplicationDbContext context)
             :base(context)
         {
         }
 
-        public VidlyContext VidlyContext
+        public ApplicationDbContext VidlyContext
         {
-            get { return Context as VidlyContext; }
+            get { return Context as ApplicationDbContext; }
         }
     }
 }

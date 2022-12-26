@@ -5,14 +5,15 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using Vidly.Core.Repositories;
+using Vidly.Models;
 
 namespace Vidly.Persistence.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly DbContext Context;
+        protected readonly ApplicationDbContext Context;
 
-        public Repository(DbContext context)
+        public Repository(ApplicationDbContext context)
         {
             Context = context;
         }

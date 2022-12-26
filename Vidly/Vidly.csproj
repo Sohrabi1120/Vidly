@@ -187,6 +187,14 @@
     <Compile Include="Migrations\202212261243403_addMembershiptypeToCustomer.designer.cs">
       <DependentUpon>202212261243403_addMembershiptypeToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212261249565_populateMembershiptypeTable.cs" />
+    <Compile Include="Migrations\202212261249565_populateMembershiptypeTable.designer.cs">
+      <DependentUpon>202212261249565_populateMembershiptypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212261404289_CustomerandMovieNameMaxlength255.cs" />
+    <Compile Include="Migrations\202212261404289_CustomerandMovieNameMaxlength255.designer.cs">
+      <DependentUpon>202212261404289_CustomerandMovieNameMaxlength255.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -194,6 +202,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Persistence\EntityConfigurations\CustomerConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\MovieConfiguration.cs" />
     <Compile Include="Persistence\Repositories\CustomerRepository.cs" />
     <Compile Include="Persistence\Repositories\MovieRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
@@ -267,7 +277,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Persistence\EntityConfigurations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -291,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212261243403_addMembershiptypeToCustomer.resx">
       <DependentUpon>202212261243403_addMembershiptypeToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212261249565_populateMembershiptypeTable.resx">
+      <DependentUpon>202212261249565_populateMembershiptypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212261404289_CustomerandMovieNameMaxlength255.resx">
+      <DependentUpon>202212261404289_CustomerandMovieNameMaxlength255.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

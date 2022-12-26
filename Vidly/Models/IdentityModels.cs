@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Vidly.Persistence.EntityConfigurations;
 
 namespace Vidly.Models
 {
@@ -25,6 +26,13 @@ namespace Vidly.Models
         public ApplicationDbContext()
         : base("ApplicationDbContext", throwIfV1Schema: false)
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new CustomerConfiguration());
+            modelBuilder.Configurations.Add(new MovieConfiguration());
+            base.OnModelCreating(modelBuilder);
         }
 
         public static ApplicationDbContext Create()

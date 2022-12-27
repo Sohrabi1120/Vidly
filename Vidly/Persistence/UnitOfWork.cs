@@ -19,10 +19,12 @@ namespace Vidly.Persistence
             Movies = new MovieRepository(context);
             Customers = new CustomerRepository(context);
             Genres = new GenreRepository(context);
+            MembershipType = new MembershipTypeRepository(context);
         }
         public IMovieRepository Movies { get; private set; }
         public ICustomerRepository Customers { get; private set; }
-        public IGenreRepository Genres { get; set; }
+        public IGenreRepository Genres { get; private set; }
+        public IMembershipTypeRepository MembershipType { get; private set; }
 
         public int Complete()
         {

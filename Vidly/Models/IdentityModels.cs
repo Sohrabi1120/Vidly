@@ -25,6 +25,7 @@ namespace Vidly.Models
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<MembershipType> MembershipTypes { get; set; }
         public ApplicationDbContext()
         : base("ApplicationDbContext", throwIfV1Schema: false)
         {
@@ -35,6 +36,7 @@ namespace Vidly.Models
             modelBuilder.Configurations.Add(new CustomerConfiguration());
             modelBuilder.Configurations.Add(new MovieConfiguration());
             modelBuilder.Configurations.Add(new GenreConfiguration());
+            modelBuilder.Configurations.Add(new MembershipTypeConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 

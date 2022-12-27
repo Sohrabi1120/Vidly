@@ -14,7 +14,10 @@ namespace Vidly.Persistence.EntityConfigurations
             Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(255);
-            
+            HasRequired(c => c.MembershipType)
+                .WithMany(m => m.Customers)
+                .HasForeignKey(c => c.MembershipTypeId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

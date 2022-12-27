@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Vidly.Core.Repositories
 {
-    public interface IRepository<TEntity> where TEntity: class
+    public interface IRepository<TEntity> where TEntity : class
     {
         TEntity Get(int Id);
         IEnumerable<TEntity> GetAll();

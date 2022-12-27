@@ -14,7 +14,11 @@ namespace Vidly.Persistence.EntityConfigurations
             Property(m => m.Name)
                 .HasMaxLength(255)
                 .IsRequired();
-            
+            HasRequired(m => m.Genre)
+                .WithMany(g => g.Movies)
+                .HasForeignKey(m => m.GenreId)
+                .WillCascadeOnDelete(false);
+
         }
     }
 }

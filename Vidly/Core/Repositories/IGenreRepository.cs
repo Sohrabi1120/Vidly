@@ -6,7 +6,7 @@ using Vidly.Models;
 
 namespace Vidly.Core.Repositories
 {
-    public interface ICustomerRepository : IRepository<Customer>
+    public interface IGenreRepository : IRepository<Genre>
     {
     }
 }

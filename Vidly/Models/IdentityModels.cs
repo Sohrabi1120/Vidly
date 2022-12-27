@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Vidly.Persistence.EntityConfiguration;
 using Vidly.Persistence.EntityConfigurations;
 
 namespace Vidly.Models
@@ -23,6 +24,7 @@ namespace Vidly.Models
     {
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Genre> Genres { get; set; }
         public ApplicationDbContext()
         : base("ApplicationDbContext", throwIfV1Schema: false)
         {
@@ -32,6 +34,7 @@ namespace Vidly.Models
         {
             modelBuilder.Configurations.Add(new CustomerConfiguration());
             modelBuilder.Configurations.Add(new MovieConfiguration());
+            modelBuilder.Configurations.Add(new GenreConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 

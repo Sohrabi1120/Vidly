@@ -7,9 +7,9 @@ using Vidly.Models;
 
 namespace Vidly.Persistence.Repositories
 {
-    public class MovieRepository : Repository<Movie>, IMovieRepository
+    public class GenreRepository : Repository<Genre>, IGenreRepository
     {
-        public MovieRepository(ApplicationDbContext context)
+        public GenreRepository(ApplicationDbContext context)
             : base(context)
         {
         }

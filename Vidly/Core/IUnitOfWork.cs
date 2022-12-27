@@ -10,6 +10,7 @@ namespace Vidly.Core
     {
         IMovieRepository Movies { get; }
         ICustomerRepository Customers { get; }
+        IGenreRepository Genres { get; }
         int Complete();
     }
 }

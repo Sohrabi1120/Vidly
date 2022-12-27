@@ -8,17 +8,29 @@
 
 @if (Model.Customers == null)
 {
-    <h3>We dont have any customers.</h3>
+    <p>We dont have any customers.</p>
 }
 else
 {
+    <table>
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Discount Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model.Customers)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customer.Name,"Details","Customers",new { id=customer.Id },null)</td>
+                    <td>@customer.MembershipType.DiscountRate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-    foreach (var customer in Model.Customers)
-    {
-        <div>
-            @Html.ActionLink(customer.Name, "Details", "Customers", new { customer.Id }, null)
-        </div>
-    }
+    
 
 }
 

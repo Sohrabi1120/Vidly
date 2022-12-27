@@ -16,7 +16,7 @@ namespace Vidly.Controllers
         {
             var customers = new CustomersViewModel()
             {
-                Customers = new CustomerRepository(new ApplicationDbContext()).GetAll()
+                Customers = new CustomerRepository(new ApplicationDbContext()).GetAllWithMembershiptype()
             };
             return View(customers);
         }
@@ -26,7 +26,7 @@ namespace Vidly.Controllers
         {
             var customer = new CustomerDetailViewModel()
             {
-                Customer = new CustomerRepository(new ApplicationDbContext()).Get(Id)
+                Customer = new CustomerRepository(new ApplicationDbContext()).GetWithMembershipType(Id)
             };
 
             return View(customer);

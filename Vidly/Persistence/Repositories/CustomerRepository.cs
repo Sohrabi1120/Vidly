@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using Vidly.Core.Repositories;
 using Vidly.Models;
+using System.Data.Entity;
 
 namespace Vidly.Persistence.Repositories
 {
@@ -14,9 +16,19 @@ namespace Vidly.Persistence.Repositories
         {
         }
 
-        public ApplicationDbContext VidlyContext
+        public ApplicationDbContext ApplicationDbContext
         {
             get { return Context as ApplicationDbContext; }
+        }
+
+        public Customer GetWithMembershipType(int Id)
+        {
+            return ApplicationDbContext.Customers.Include(c => c.MembershipType).Where(c => c.Id ==Id).SingleOrDefault();
+        }
+
+        public IEnumerable<Customer> GetAllWithMembershiptype()
+        {
+            return ApplicationDbContext.Set<Customer>().Include(c => c.MembershipType).ToList();
         }
     }
 }

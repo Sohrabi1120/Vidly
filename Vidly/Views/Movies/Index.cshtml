@@ -1,4 +1,4 @@
-﻿@model Vidly.ViewModels.MovieViewModel
+﻿@model Vidly.ViewModels.MoviesViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,10 +6,28 @@
 
 <h2>Movies</h2>
 
-@foreach (var movie in Model.Movies)
+@if (Model.Movies == null)
 {
-    <div>
-        @movie.Name
-    </div>
+    <p>We dont have any Movie.</p>
 }
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Movie</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model.Movies)
+            {
+                <tr>
+                    <td>@Html.ActionLink(movie.Name, "Details", "Movies", new { Id = movie.Id }, null)</td>
+                    <td>@movie.Genre.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
+}

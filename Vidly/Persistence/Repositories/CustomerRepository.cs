@@ -23,12 +23,12 @@ namespace Vidly.Persistence.Repositories
 
         public Customer GetWithMembershipType(int Id)
         {
-            return ApplicationDbContext.Customers.Include(c => c.MembershipType).Where(c => c.Id ==Id).SingleOrDefault();
+            return Context.Customers.Include(c => c.MembershipType).Where(c => c.Id ==Id).Single();
         }
 
         public IEnumerable<Customer> GetAllWithMembershiptype()
         {
-            return ApplicationDbContext.Set<Customer>().Include(c => c.MembershipType).ToList();
+            return Context.Set<Customer>().Include(c => c.MembershipType).ToList();
         }
     }
 }

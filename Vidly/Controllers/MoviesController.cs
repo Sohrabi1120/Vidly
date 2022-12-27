@@ -4,25 +4,30 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.Persistence.Repositories;
 using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
-        // GET: Movies
-
+        [Route("Movies")]
         public ActionResult Index()
         {
-            var movies = new MovieViewModel()
+            var movies = new MoviesViewModel()
             {
-                Movies = new List<Movie>()
-                {
-                    new Movie(){Name = "Shrek!" },
-                    new Movie(){Name = "Wall-e" }
-                }
+                Movies = new MovieRepository(new ApplicationDbContext()).GetAllWithGenre()
             };
             return View(movies);
+        }
+        [Route("Movies/Details/{Id:int}")]
+        public ActionResult Details(int Id)
+        {
+            var movie = new MovieDetailViewModel()
+            {
+                Movie = new MovieRepository(new ApplicationDbContext()).GetWithGenre(Id)
+            };
+            return View(movie);
         }
 
         public ActionResult Random()

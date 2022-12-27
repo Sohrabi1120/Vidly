@@ -195,6 +195,10 @@
     <Compile Include="Migrations\202212261404289_CustomerandMovieNameMaxlength255.designer.cs">
       <DependentUpon>202212261404289_CustomerandMovieNameMaxlength255.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212270613176_addNameToMembershipType.cs" />
+    <Compile Include="Migrations\202212270613176_addNameToMembershipType.designer.cs">
+      <DependentUpon>202212270613176_addNameToMembershipType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -307,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212261404289_CustomerandMovieNameMaxlength255.resx">
       <DependentUpon>202212261404289_CustomerandMovieNameMaxlength255.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212270613176_addNameToMembershipType.resx">
+      <DependentUpon>202212270613176_addNameToMembershipType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

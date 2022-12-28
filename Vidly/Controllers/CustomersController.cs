@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Vidly.Core;
 using Vidly.Models;
 using Vidly.Persistence.Repositories;
 using Vidly.ViewModels;
@@ -11,12 +12,19 @@ namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public CustomersController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         [Route("Customers/")]
         public ActionResult Index()
         {
             var customers = new CustomersViewModel()
             {
-                Customers = new CustomerRepository(new ApplicationDbContext()).GetAllWithMembershiptype()
+                Customers = _unitOfWork.Customers.GetAllWithMembershiptype()
             };
             return View(customers);
         }
@@ -26,7 +34,7 @@ namespace Vidly.Controllers
         {
             var customer = new CustomerDetailViewModel()
             {
-                Customer = new CustomerRepository(new ApplicationDbContext()).GetWithMembershipType(Id)
+                Customer = _unitOfWork.Customers.GetWithMembershipType(Id)
             };
 
             return View(customer);
@@ -34,7 +42,19 @@ namespace Vidly.Controllers
 
         public ActionResult New()
         {
-            return View();
+            var viewModel = new NewCustomerViewModel()
+            { 
+                MembershipTypes = _unitOfWork.MembershipType.GetAll()
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            _unitOfWork.Customers.Add(customer);
+
+            return RedirectToAction("Index", "Customers");
         }
     }
 }

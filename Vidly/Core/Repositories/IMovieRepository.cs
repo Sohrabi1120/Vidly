@@ -8,5 +8,8 @@ namespace Vidly.Core.Repositories
 {
     public interface IMovieRepository : IRepository<Movie>
     {
+        Movie GetWithGenre(int Id);
+
+        IEnumerable<Movie> GetAllWithGenre();
     }
 }

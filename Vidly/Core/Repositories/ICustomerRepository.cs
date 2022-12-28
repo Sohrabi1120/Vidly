@@ -8,5 +8,8 @@ namespace Vidly.Core.Repositories
 {
     public interface ICustomerRepository : IRepository<Customer>
     {
+        Customer GetWithMembershipType(int Id);
+
+        IEnumerable<Customer> GetAllWithMembershiptype();
     }
 }

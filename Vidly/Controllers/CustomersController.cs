@@ -53,7 +53,7 @@ namespace Vidly.Controllers
         public ActionResult Create(Customer customer)
         {
             _unitOfWork.Customers.Add(customer);
-
+            _unitOfWork.Complete();
             return RedirectToAction("Index", "Customers");
         }
     }

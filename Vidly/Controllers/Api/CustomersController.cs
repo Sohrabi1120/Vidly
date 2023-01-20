@@ -24,23 +24,23 @@ namespace Vidly.Controllers.Api
             return _unitOfWork.Customers.GetAll().Select(Mapper.Map<Customer, CustomerDto>);
         }
 
-        public CustomerDto GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _unitOfWork.Customers.Get(id);
             if(customer == null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
-            return Mapper.Map<Customer, CustomerDto>( customer);
+            return Ok(Mapper.Map<Customer, CustomerDto>(customer));
         }
         [HttpPost]
-        public CustomerDto CreateCustomer(CustomerDto customerDto)
+        public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
             _unitOfWork.Customers.Add(customer);
             _unitOfWork.Complete();
             customerDto.Id = customer.Id;
-            return customerDto;
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
         [HttpPut]
